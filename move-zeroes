@@ -1,0 +1,29 @@
+class Solution {
+    public void moveZeroes(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            
+            if (nums[i] == 0) {
+                nums = rotateByOne(nums, i);
+                int j = i;
+                while (j < nums.length) {
+                      if (nums[i] == 0) {
+                            nums = rotateByOne(nums, i); 
+                      } else {
+                          break;
+                      }
+                    j++;
+                }
+               
+            }
+        }
+  
+    }
+    int[] rotateByOne(int[] nums, int i) {
+        int temp = nums[i];
+        for (int j = i; j + 1 < nums.length; j++) {
+            nums[j] = nums[j+1];
+        }
+        nums[nums.length - 1] = temp;
+        return nums;
+    }
+}
